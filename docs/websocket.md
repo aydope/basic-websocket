@@ -22,17 +22,17 @@ every update.
   Technology              Communication model     Typical use cases
   ----------------------- ----------------------- -----------------------
   Polling                 Client repeatedly sends Simple status checks
-                          HTTP requests at        
-                          intervals               
+                          HTTP requests at
+                          intervals
 
   WebSocket               Persistent,             Chat, collaboration,
                           bidirectional           live dashboards
-                          connection              
+                          connection
 
   Webhook                 A server sends an HTTP  Payment notifications,
                           request to another      integrations
-                          system when an event    
-                          occurs                  
+                          system when an event
+                          occurs
   -----------------------------------------------------------------------
 
 **Polling** repeatedly asks the server whether new data is available.\
@@ -65,18 +65,18 @@ A WebSocket connection has four states:
   ------------------------------------------------------------------------
                  Numeric value State                 Meaning
   ---------------------------- --------------------- ---------------------
-                           `0` `CONNECTING`          The connection
+                           0 `CONNECTING`            The connection
                                                      handshake is in
                                                      progress
 
-                           `1` `OPEN`                The WebSocket
+                           1 `OPEN`                  The WebSocket
                                                      connection is
                                                      established
 
-                           `2` `CLOSING`             The connection is
+                           2 `CLOSING`               The connection is
                                                      shutting down
 
-                           `3` `CLOSED`              The connection is
+                           3 `CLOSED`                The connection is
                                                      closed or could not
                                                      be established
   ------------------------------------------------------------------------
@@ -414,13 +414,13 @@ socket.
   Pattern                 Meaning                 Example
   ----------------------- ----------------------- -----------------------
   Unicast                 One sender to one       Direct message
-                          recipient               
+                          recipient
 
   Multicast               One sender to a         Room or subscription
                           selected group          update
 
   Broadcast               One sender to all       Global announcement
-                          relevant recipients     
+                          relevant recipients
   -----------------------------------------------------------------------
 
 ### Routing models
@@ -838,16 +838,16 @@ are also required.
 
   WebRTC                  Peer-to-peer            Voice, video, real-time
                           media/data, with        peer data
-                          signaling               
+                          signaling
 
   SSE                     One-way                 Feeds, notifications,
                           server-to-client event  tickers
-                          stream over HTTP        
+                          stream over HTTP
 
   WebTransport            HTTP/3-based            Low-latency, advanced
                           bidirectional transport real-time applications
-                          with streams and        
-                          datagrams               
+                          with streams and
+                          datagrams
   -----------------------------------------------------------------------
 
 ### WebSocket and WebRTC together

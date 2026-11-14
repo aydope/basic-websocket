@@ -1,6 +1,6 @@
 {
   "name": "ws-basic",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Basic WebSocket in Node.js",
   "main": "./dist/index.js",
   "private": true,
@@ -8,6 +8,8 @@
     "build": "tsc",
     "start": "node -w ./dist/index.js",
     "dev": "tsx ./src/index.ts",
+    "client": "serve -l 3001 .",
+    "all": "concurrently \"npm run dev\" \"npm run client\"",
     "typecheck": "tsc --noEmit"
   },
   "keywords": [],
@@ -17,6 +19,9 @@
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.6",
     "@types/ws": "^8.18.2",
+    "concurrently": "^10.0.7",
+    "serve": "^14.2.8",
+    "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   },
   "dependencies": {

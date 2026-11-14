@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #e5e5e5;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+h1 {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #555;
+}
+
+#status {
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #111;
+  border: 1px solid #1f1f1f;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.status-on {
+  color: #4ade80;
+}
+.status-off {
+  color: #f87171;
+}
+
+form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+input {
+  flex: 1 1 200px;
+  padding: 12px 14px;
+  background: #0f0f0f;
+  border: 1px solid #1f1f1f;
+  border-radius: 10px;
+  color: #e5e5e5;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input:focus {
+  border-color: #4ade80;
+}
+input::placeholder {
+  color: #444;
+}
+
+button {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #1f1f1f;
+  background: #111;
+  color: #e5e5e5;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+button:hover:not(:disabled) {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+}
+button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+button[type="submit"] {
+  background: #4ade80;
+  border-color: #4ade80;
+  color: #0a0a0a;
+  font-weight: 700;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background: #22c55e;
+  border-color: #22c55e;
+}
+
+#log {
+  background: #0f0f0f;
+  border: 1px solid #1f1f1f;
+  border-radius: 10px;
+  padding: 16px;
+  height: 300px;
+  overflow-y: auto;
+  font-size: 12px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #888;
+}
+
+#log::-webkit-scrollbar {
+  width: 6px;
+}
+#log::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 3px;
+}

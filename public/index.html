@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSocket Monitor</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>WebSocket Monitor</h1>
+      <div id="status" class="status-off">Connecting...</div>
+
+      <form id="message-form">
+        <input
+          id="message-input"
+          type="text"
+          placeholder="send cargo..."
+          required
+          autocomplete="off"
+        />
+        <button type="submit">Send</button>
+        <button type="button" id="disconnect" disabled>Off</button>
+        <button type="button" id="reconnect" disabled>On</button>
+      </form>
+
+      <pre id="log"></pre>
+    </div>
+
+    <script>
+      const statusEl = document.getElementById("status");
+      const log = document.getElementById("log");
+      const input = document.getElementById("message-input");
+      const form = document.getElementById("message-form");
+      const disconnectBtn = document.getElementById("disconnect");
+      const reconnectBtn = document.getElementById("reconnect");
+
+      let socket = null;
+
+      const appendLog = (label, message) => {
+        const time = new Date().toLocaleTimeString();
+        log.textContent += `[${time}] ${label} ${message}\n`;
+        log.scrollTop = log.scrollHeight;
+      };
+
+      function setupSocket() {
+        socket = new WebSocket("ws://localhost:3000");
+
+        socket.addEventListener("open", () => {
+          statusEl.textContent = "CONNECTED";
+          statusEl.className = "status-on";
+          appendLog("[SYSTEM]", "Tunnel established.");
+          disconnectBtn.disabled = false;
+          reconnectBtn.disabled = true;
+        });
+
+        socket.addEventListener("message", (event) => {
+          appendLog("[RECV]", event.data);
+        });
+
+        socket.addEventListener("close", () => {
+          statusEl.textContent = "DISCONNECTED";
+          statusEl.className = "status-off";
+          appendLog("[SYSTEM]", "Tunnel collapsed.");
+          disconnectBtn.disabled = true;
+          reconnectBtn.disabled = false;
+        });
+
+        socket.addEventListener("error", () => {
+          appendLog("[ERROR]", "Connection error.");
+        });
+      }
+
+      setupSocket();
+
+      disconnectBtn.addEventListener("click", () => {
+        if (socket) socket.close();
+      });
+
+      reconnectBtn.addEventListener("click", () => {
+        if (socket) {
+          socket.onopen = null;
+          socket.onmessage = null;
+          socket.onclose = null;
+          socket.onerror = null;
+        }
+        setupSocket();
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!socket || socket.readyState !== WebSocket.OPEN) {
+          appendLog("[ERROR]", "No active tunnel.");
+          return;
+        }
+        const msg = input.value.trim();
+        if (msg) {
+          socket.send(msg);
+          appendLog("[SEND]", msg);
+          input.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>

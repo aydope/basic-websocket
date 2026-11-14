@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "node -w ./dist/index.js",
     "dev": "tsx ./src/index.ts",
-    "client": "serve -l 3001 .",
+    "client": "serve -l 3001 public",
     "all": "concurrently \"npm run dev\" \"npm run client\"",
     "typecheck": "tsc --noEmit"
   },

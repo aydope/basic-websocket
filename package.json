@@ -1,0 +1,27 @@
+{
+  "name": "ws-basic",
+  "version": "0.1.0",
+  "description": "Basic WebSocket in Node.js",
+  "main": "./dist/index.js",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "start": "node -w ./dist/index.js",
+    "dev": "tsx ./src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "@types/ws": "^8.18.2",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "nanoid": "^6.0.2",
+    "ws": "^8.23.0"
+  }
+}

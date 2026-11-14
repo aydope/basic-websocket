@@ -54,12 +54,19 @@ npm run typecheck
 ## Project structure
 
 ```bash
-.
-├── index.html        # WebSocket test client
+basic-websocket/
+├── public/
+│   └── index.html        # WebSocket test client
+│   └── styles.css
 ├── src/
-│   └── index.ts      # WebSocket server
-├── docs.md           # Extended documentation
+│   └── index.ts          # Standalone WebSocket server (no Express/HTTP)
+│   └── attach.ts         # Attach WebSocket to an existing Express/HTTP server
+├── docs/
+│   └── websocket.md      # Extended documentation
+├── .gitignore
+├── README.md
 ├── package.json
+├── package-lock.json
 └── tsconfig.json
 ```
 
